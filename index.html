@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaPut</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary: #D78FEE;
+            --secondary: #FDCFFA;
+            --accent: #540863;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.2rem 0;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .logo-text h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .nav-contact {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .nav-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features */
+        .features {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #6b7280;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .menu-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+
+        .menu-image::before {
+            content: '';
+            display: block;
+            padding-top: 100%; /* Ini yang bikin 1:1 ratio */
+        }
+
+        .menu-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+
+        .menu-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-card:hover .menu-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-content {
+            padding: 30px;
+        }
+
+        .menu-category {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .menu-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .menu-description {
+            font-size: 0.95rem;
+            color: #6b7280;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 12px;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .price-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .order-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #D78FEE, #540863);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(89, 3, 93, 0.5);
+        }
+
+        .order-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 25px rgba(89, 3, 93, 0.5);
+        }
+
+        /* Bundling Card */
+        .bundling-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #ED3EF7, #BF2EF0);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bundling-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .bundling-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .bundling-info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .bundling-info .discount {
+            display: inline-block;
+            background: #C62300;
+            color: var(--light);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .bundling-info p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .bundling-pricing {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .bundling-price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .bundling-card .order-btn {
+            background: white;
+            color: var(--primary);
+        }
+
+        .bundling-card .order-btn:hover {
+            background: var(--light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--accent);
+            color: white;
+            padding: 50px 20px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bundling-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .bundling-info h2 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon"><h5>[S]</h5></div>
+                <div class="logo-text">
+                    <h2>Warung SaPut</h2>
+                    <p>Kelompok 4 (XI - PPLG 1)</p>
+                </div>
+            </div>
+            <a href="http://wa.me/6285117242758?text=Haloo+kak+aku+mau+pesen+dongg" class="nav-contact">
+                <span>💬</span> Hubungi Kami
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Nikmati <span class="highlight">Kelezatan</span><br>Menu Pilihan Kami</h1>
+        <p>Sajian istimewa dengan cita rasa autentik yang siap memanjakan lidah Kamu. Pesan sekarang dan rasakan pengalaman kuliner yang tak terlupakan!</p>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="feature-card fade-in">
+            <div class="feature-icon">⚡</div>
+            <h3>Cepat & Praktis</h3>
+            <p>Pemesanan mudah melalui WhatsApp dengan respon cepat</p>
+        </div>
+        <div class="feature-card fade-in">
+            <div class="feature-icon">✨</div>
+            <h3>Kualitas Terjamin</h3>
+            <p>Bahan fresh dan higienis untuk kepuasan pelanggan</p>
+        </div>
+        <div class="feature-card fade-in">
+            <div class="feature-icon">💰</div>
+            <h3>Harga Terjangkau</h3>
+            <p>Harga pelajar dengan paket bundling hemat</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <div class="section-header">
+            <h2>Menu Spesial Kami</h2>
+            <p>Pilihan menu berkualitas dengan harga terbaik</p>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Pangbo Pangbo -->
+            <div class="menu-card fade-in">
+                <div class="menu-image">
+                    <img src="https://i.pinimg.com/736x/20/50/76/205076d6b0a9a79a200e1605f411845d.jpg" alt="PangBo">
+                </div>
+                <div class="menu-content">
+                    <span class="menu-category">Cemilan Gurih</span>
+                    <h3 class="menu-title">PANGBO</h3>
+                    <p class="menu-description">Pangsit Bom atau disebut PangBo adalah Pangsit yang berisi Aci dan Bakso. Satu porsi dapat 4 Pengsit</p>
+                    <div class="price-row">
+                        <span class="price-label">Harga Satuan</span>
+                        <span class="price-value">Rp 5.000</span>
+                    </div>
+                    <a href="https://wa.me/6285117242758?text=Halo,%20saya%20ingin%20memesan%20PangBo" class="order-btn">
+                        <span>💬</span> Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bakso Jule -->
+            <div class="menu-card fade-in">
+                <span class="badge">BEST SELLER</span>
+                <div class="menu-image">
+                    <img src="https://i.pinimg.com/736x/be/f1/1d/bef11d88a71e1ca93dd0fba61769351f.jpg" alt="BaLe">
+                </div>
+                <div class="menu-content">
+                    <span class="menu-category">Makanan Utama</span>
+                    <h3 class="menu-title">BAKSO JULE</h3>
+                    <p class="menu-description">Bakso Jule istimewa dengan kuah gurih khas dan bakso kenyal yang menggugah selera dengan tambahan Kwetiau. Porsi mengenyangkan, dengan 7 butir Bakso dan Kwetiau!</p>
+                    <div class="price-row">
+                        <span class="price-label">Harga Satuan</span>
+                        <span class="price-value">Rp 12.000</span>
+                    </div>
+                    <a href="https://wa.me/6285117242758?text=Halo,%20saya%20ingin%20memesan%20BaLe" class="order-btn">
+                        <span>💬</span> Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bluying Bluying -->
+            <div class="menu-card fade-in">
+                <span class="badge">FAVORIT</span>
+                <div class="menu-image">
+                    <img src="https://i.pinimg.com/1200x/08/75/a5/0875a598900f2692d9484bd612ccd89e.jpg" alt="Bluying">
+                </div>
+                <div class="menu-content">
+                    <span class="menu-category">Minuman Spesial</span>
+                    <h3 class="menu-title">BLUYING BLUYING</h3>
+                    <p class="menu-description">Blue Bullring dengan sensasi rasa unik dan menyegarkan dengan campuran soda dan minuman biru. Minuman favorit untuk boost energi!</p>
+                    <div class="price-row">
+                        <span class="price-label">Harga Satuan</span>
+                        <span class="price-value">Rp 6.000</span>
+                    </div>
+                    <a href="https://wa.me/6285117242758?text=Halo,%20saya%20ingin%20memesan%20Bluying" class="order-btn">
+                        <span>💬</span> Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bundling Package -->
+            <div class="menu-card bundling-card fade-in">
+                <div class="menu-content">
+                    <div class="bundling-content">
+                        <div class="bundling-info">
+                            <h2>Paket Bundling Hemat</h2>
+                            <span class="discount">HEMAT Rp 3.000</span>
+                            <p><strong>Dapatkan:</strong></p>
+                            <p>1x Pangbo Pangbo</p>
+                            <p>1x Bakso Jule</p>
+                            <p>1x Bluying Bluying</p>
+                            <p style="margin-top: 20px; font-size: 0.95rem; opacity: 0.9;">Paket lengkap untuk makan siang yang memuaskan!</p>
+                        </div>
+                        <div class="bundling-pricing">
+                            <p class="original-price">Harga Normal: Rp 23.000</p>
+                            <div class="bundling-price">Rp 20.000</div>
+                            <a href="https://wa.me/6285117242758?text=Halo,%20saya%20ingin%20memesan%20Paket%20Bundling%20Hemat" class="order-btn">
+                                <span></span> Pesan Paket Bundling
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang Kami</h3>
+                <p>Saput, Warung dari Kelompok 4 menyajikan berbagai menu berkualitas dengan harga terjangkau untuk memenuhi kebutuhan kuliner Anda.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Menu Populer</h3>
+                <a href="#menu">Pangsit Bom</a>
+                <a href="#menu">Bakso Jule</a>
+                <a href="#menu">Bluying</a>
+                <a href="#menu">Paket Bundling</a>
+            </div>
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p>📱 WhatsApp: +62 851-1724-2758</p>
+                <p>📍 Lokasi: SMK Negeri 46 Jakarta</p>
+                <p>⏰ Waktu: 18 November 2025</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; PKWU SaPut Kelompok 4 - XI PPLG 1. 2025.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer untuk animasi fade-in
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe semua elemen dengan class fade-in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll untuk link anchor
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efek parallax sederhana pada hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            hero.style.opacity = 1 - (scrolled / 500);
+        });
+
+        // Animasi pada tombol order
+        document.querySelectorAll('.order-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
